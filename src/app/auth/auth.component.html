@@ -1,8 +1,5 @@
 <div class="row">
     <div class="col-xs-12">
-        <!-- <div class="alert alert-danger" *ngIf="error">
-            {{error}}
-        </div> -->
         <app-alert [message]="error" *ngIf="error" (close)="onHandleError()"></app-alert>
         <div *ngIf="isLoading" id="spinner">
             <app-loading-spinner>Loading</app-loading-spinner>
@@ -16,10 +13,10 @@
                 <label for="password">Password</label>
                 <input type="password" id="password" class="form-control" ngModel name="password" required minlength="8">
             </div>
-            
+
             <hr>
             <div>
-                <button type="submit" class="btn btn-primary" id="action"[disabled]="!authForm.valid"> {{isLoginMode? 'Login' : 'Sign Up'}}</button>
+                <button type="submit" class="btn btn-primary" id="action" [disabled]="!authForm.valid"> {{isLoginMode? 'Login' : 'Sign Up'}}</button>
             </div>
             <br>
             <div>

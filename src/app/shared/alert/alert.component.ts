@@ -9,8 +9,8 @@ import { Component, Input, Output ,EventEmitter  } from '@angular/core';
 )
 export class AlertComponent
 {
-    @Input() message:string;
-    @Output() close= new EventEmitter<boolean>();
+    @Input() message : string;
+    @Output() close = new EventEmitter<boolean>();
 
     closeWindow()
     {

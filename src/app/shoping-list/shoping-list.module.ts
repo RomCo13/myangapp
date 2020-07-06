@@ -14,7 +14,7 @@ import { RouterModule } from '@angular/router';
         ReactiveFormsModule,
         FormsModule,
         sharedModule,
-        RouterModule.forChild([{path:'',component:ShopingListComponent}]),
+        RouterModule.forChild([{path : '' , component : ShopingListComponent}]),
 
     ],
     exports:[

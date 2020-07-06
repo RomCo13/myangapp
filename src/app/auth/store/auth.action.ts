@@ -2,51 +2,54 @@ import { Action } from '@ngrx/store';
 
  export const LOGIN = 'LOGIN';
  export const LOGOUT = 'LOGOUT';
- export const Login_Start = 'Login_Start';
- export const Login_Fail='Login_Fail';
- export const SignUp_Start='Signup_Start';
- export const Clear_Error='Clear_Error';
- export const Auto_Login='Auto_Login';
-
+ export const LOGIN_START = 'LOGIN_START';
+ export const LOGIN_FAIL='LOGIN_FAIL';
+ export const SIGNUP_START='SIGNUP_START';
+ export const CLEAR_ERROR='CLEAR_ERROR';
+ export const AUTO_LOGIN='AUTO_LOGIN';
 
  export class Login implements Action{
      readonly type = LOGIN;
 
      constructor(public payload : {
         email:string,
-        userId:string;
-        token:string;
-        expirationDate:Date;
-        redirect:boolean;
+        userId:string,
+        token:string,
+        expirationDate:Date,
+        redirect:boolean,
     }){}
  }
 
  export class Logout implements Action{
-     readonly type =LOGOUT;
+     readonly type = LOGOUT;
 
  }
+
  export class LoginStart implements Action{
-     readonly type = Login_Start;
+     readonly type = LOGIN_START;
 
-     constructor(public payload : {email:string,password:string} ){}
+     constructor(public payload : {email : string , password : string}){}
  }
-export class LoginFail implements Action{
-    readonly type = Login_Fail;
 
-    constructor(public payload:{errorMessage:string}){}
+export class LoginFail implements Action{
+    readonly type = LOGIN_FAIL;
+
+    constructor(public payload : {errorMessage : string}){}
 }
 
 export class SignupStart implements Action{
-    readonly type = SignUp_Start;
+    readonly type = SIGNUP_START;
 
-    constructor(public payload : {email:string,password:string}){}
+    constructor(public payload : {email : string , password : string}){}
 }
+
 export class ClearError implements Action{
-    readonly type = Clear_Error;
+    readonly type = CLEAR_ERROR;
 }
 
 export class AutoLogin implements Action{
-    readonly type = Auto_Login;
+    readonly type = AUTO_LOGIN;
 
 }
- export type AuthAction= Login|Logout|LoginStart|LoginFail|SignupStart|ClearError|AutoLogin
+
+ export type AuthAction = Login | Logout | LoginStart | LoginFail | SignupStart | ClearError | AutoLogin;
