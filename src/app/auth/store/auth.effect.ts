@@ -3,7 +3,7 @@ import * as AuthAction from '../store/auth.action';
 import { switchMap, catchError, map, tap } from 'rxjs/operators';
 import { environment } from '../../../environments/environment'
 import { HttpClient } from '@angular/common/http';
-import { of, throwError } from 'rxjs';
+import { of } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../user.module';

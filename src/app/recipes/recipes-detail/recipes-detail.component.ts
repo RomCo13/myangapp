@@ -1,6 +1,6 @@
 import { Component, OnInit , Injectable } from '@angular/core';
 import { Recipe } from '../recipe.model';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute , Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import * as fromStoreApp from '../../store/app.reducer'
 import { map, switchMap } from 'rxjs/operators';
