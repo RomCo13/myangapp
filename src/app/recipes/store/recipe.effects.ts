@@ -1,6 +1,6 @@
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import * as RecipesAction from './recipe.action'
-import { switchMap, map, withLatestFrom, tap, mergeMap, catchError } from 'rxjs/operators';
+import { switchMap, map, withLatestFrom,  catchError } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { Recipe } from '../recipe.model';
 import { Injectable } from '@angular/core';

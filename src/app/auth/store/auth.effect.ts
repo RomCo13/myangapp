@@ -7,8 +7,6 @@ import { of, throwError } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../user.module';
-import { Store } from '@ngrx/store';
-import * as fromStoreApp from '../../store/app.reducer'
 
 export interface AuthResponeData
 {
@@ -24,8 +22,7 @@ export interface AuthResponeData
 export class AuthEffect{
     constructor(private actions: Actions,
                 private http:HttpClient,
-                private router :Router,
-                private store: Store<fromStoreApp.AppState> ){}
+                private router :Router ){}
 
     loginUrl = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=' + environment.firebaseAPIKey;
     signUpUrl = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=' + environment.firebaseAPIKey;
@@ -119,11 +116,11 @@ export class AuthEffect{
                                     new Date(data._ExprToken));
         if(loadedUser.token)
         {
-            return new AuthAction.Login({email:data.email,
-                                        userId:data.id,
-                                        token:data._token,
-                                        expirationDate:data._ExprToken,
-                                        redirect:false});
+            return new AuthAction.Login({email : data.email,
+                                        userId : data.id,
+                                        token : data._token,
+                                        expirationDate : data._ExprToken,
+                                        redirect : false});
         }
         else
           return {type : 'dummy'};
