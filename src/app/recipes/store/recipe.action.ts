@@ -1,39 +1,43 @@
 import { Action } from '@ngrx/store';
 import { Recipe } from '../recipe.model';
 
-export const Set_Recipes='Set_Recipe';
-export const Fecth_Recipes='Fecth_Recipes';
-export const Add_Recipe='Add_Recipe';
-export const Update_Recipe='Update_Recipe';
-export const Delete_Recipe='Delete_Recipe';
-export const Store_Recipe='Store_Recipe';
-
+export const SET_RECIPE = 'SET_RECIPE';
+export const FETCH_RECIPE = 'FETCH_RECIPE';
+export const ADD_RECIPE = 'ADD_RECIPE';
+export const UPDATE_RECIPE = 'UPDATE_RECIPE';
+export const DELETE_RECIPE = 'DELETE_RECIPE';
+export const STORE_RECIPE = 'STORE_RECIPE';
 
 export class FetchRecipes implements Action{
-    readonly type = Fecth_Recipes;
+    readonly type = FETCH_RECIPE;
 }
+
 export class StoreRecipe implements Action{
-    readonly type =Store_Recipe;
-
+    readonly type = STORE_RECIPE;
 }
+
 export class SetRecipes implements Action{
-    readonly type = Set_Recipes;
+    readonly type = SET_RECIPE;
 
-    constructor ( public payload:Recipe[]){}
+    constructor ( public payload : Recipe[]){}
 }
+
 export class AddRecipe implements Action{
-    readonly type = Add_Recipe;
+    readonly type = ADD_RECIPE;
 
-    constructor (public payload:Recipe){}
+    constructor (public payload : Recipe){}
 }
+
 export class UpdateRecipe implements Action{
-    readonly type = Update_Recipe;
+    readonly type = UPDATE_RECIPE;
 
-    constructor (public payload:{index:number,newRecipe:Recipe}){}
+    constructor (public payload : {index : number , newRecipe : Recipe}){}
 }
+
 export class DeleteRecipe implements Action{
-    readonly type = Delete_Recipe;
+    readonly type = DELETE_RECIPE;
 
-    constructor (public payload:{index:number}){}
+    constructor (public payload : {index : number}){}
 }
-export type RecipeAction = SetRecipes|FetchRecipes|AddRecipe|UpdateRecipe|DeleteRecipe|StoreRecipe
+
+export type RecipeAction = SetRecipes | FetchRecipes | AddRecipe | UpdateRecipe | DeleteRecipe | StoreRecipe ;

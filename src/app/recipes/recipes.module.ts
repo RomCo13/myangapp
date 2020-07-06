@@ -8,15 +8,15 @@ import { RecipeEditComponent } from './recipe-edit/recipe-edit.component';
 import { RouterModule, Routes } from '@angular/router';
 import { authGuard } from '../auth/auth.guard';
 import { resolverService } from './recipe-reslover.service';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { sharedModule } from '../shared/shared.module';
 
-const routes:Routes=[
-    {path:'',component:RecipesComponent,canActivate:[authGuard] ,children :[
-        {path:'',component:RecipesStartComponent},
-        {path:'new',component:RecipeEditComponent},
-        {path:':id',component:RecipesDetailComponent,resolve :[resolverService]},
-        {path:':id/edit',component:RecipeEditComponent ,resolve :[resolverService]},
+const routes : Routes = [
+    {path : '' , component : RecipesComponent , canActivate : [authGuard] ,children :[
+        {path : '' , component : RecipesStartComponent},
+        {path : 'new' , component : RecipeEditComponent},
+        {path : ':id' , component : RecipesDetailComponent , resolve : [resolverService]},
+        {path : ':id/edit' , component : RecipeEditComponent ,resolve : [resolverService]},
     ]},
 ]
 @NgModule({

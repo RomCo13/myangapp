@@ -5,45 +5,42 @@ import * as shopinglistActions  from './shoping-list.actions';
 
 
 export interface State{
-    ingredients:Ingredient[];
-    editedIngredient:Ingredient;
-    editedIngredientIndex:number;
+    ingredients : Ingredient[];
+    editedIngredient : Ingredient;
+    editedIngredientIndex : number;
   }
 
-const initialState :State = {
+const initialState : State = {
     ingredients : [
-        new Ingredient('apples', 5),
-        new Ingredient('tomatoes' ,10)
+        new Ingredient('apples' , 5),
+        new Ingredient('tomatoes' , 10)
     ],
-    editedIngredient:null,
-    editedIngredientIndex:-1,
+    editedIngredient : null,
+    editedIngredientIndex : -1,
 };
 
 
-export function shopinglistReducer(state:State = initialState , action: shopinglistActions.AddIngredient|shopinglistActions.AddIngredients|shopinglistActions.UpdateIngredient|shopinglistActions.DeleteIngredient|shopinglistActions.StartEdit|shopinglistActions.StopEdit )
+export function shopinglistReducer(state : State = initialState , action : shopinglistActions.ShopingListAction)
 {
      switch(action.type)
      {
-        case shopinglistActions.Add_Ingredient:
+        case shopinglistActions.ADD_INGREDIENT:
             {
                 return{...state,
                     ingredients:[...state.ingredients, action.payload ]
                 }
             }
-        case shopinglistActions.Add_Ingredients:
+        case shopinglistActions.ADD_INGREDIENTS:
             {
                 return {...state,
                     ingredients:[...state.ingredients, ...action.payload]
                 }
             }
-        case shopinglistActions.Update_Ingredient:
+        case shopinglistActions.UPDATE_INGREDIENTS:
             {
-                const ingr=state.ingredients[ state.editedIngredientIndex];
-                const updated={...action.payload.newIngr};
-   
-
-                const updatedIngrs=[...state.ingredients];
-                updatedIngrs[state.editedIngredientIndex]= updated;
+                const updated = {...action.payload.newIngr};
+                const updatedIngrs = [...state.ingredients];
+                updatedIngrs[state.editedIngredientIndex] = updated;
                 return {
                     ...state,
                     ingredients:updatedIngrs,
@@ -52,29 +49,31 @@ export function shopinglistReducer(state:State = initialState , action: shopingl
                 }
 
             }
-        case shopinglistActions.Delete_Ingredient:
-            {   
-                const ingeToDel= state.ingredients[state.editedIngredientIndex]
-                return {...state,ingredients:state.ingredients.filter((ig)=>
+        case shopinglistActions.DELETE_INGREDIENTS:
+            {
+                const ingrToDel = state.ingredients[state.editedIngredientIndex]
+                return {
+                  ...state,
+                  ingredients:state.ingredients.filter((ig) =>
                     {
-                        return ingeToDel!==ig;
+                        return ingrToDel !== ig;
                     }),
-                    editedIngredientIndex:-1,
-                    editedIngredient:null,};
-                    
+                  editedIngredientIndex : -1,
+                  editedIngredient : null};
+
             }
-        case shopinglistActions.Start_Edit:
+        case shopinglistActions.START_EDIT:
             {
                 return{...state,
-                    editedIngredientIndex:action.payload,
-                    editedIngredient:{...state.ingredients[action.payload]}
+                    editedIngredientIndex : action.payload,
+                    editedIngredient : {...state.ingredients[action.payload]}
                 }
             }
-        case shopinglistActions.Stop_Edit:
+        case shopinglistActions.STOP_EDIT:
             {
                 return {...state,
-                    editedIngredient:null,
-                    editedIngredientIndex:-1
+                    editedIngredient : null,
+                    editedIngredientIndex : -1
                 }
             }
         default:
